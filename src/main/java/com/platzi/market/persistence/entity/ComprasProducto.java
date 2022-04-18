@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "compras_productos")
 public class ComprasProducto {
-    //YA NO PODER LAS COLUMNAS QUE CORRESPONDEN A LA CLAVE COMPUESTA
     @EmbeddedId
     private ComprasProductoPK id;
 
@@ -14,12 +13,16 @@ public class ComprasProducto {
     private Boolean estado;
 
     @ManyToOne
-    @JoinColumn(name="id_compra",insertable = false,updatable = false)
-    private Compra compras;
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    private Compra compra;
 
     @ManyToOne
-    @JoinColumn(name="id_producto",insertable = false,updatable = false)
-    private Producto productos;
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
+    private Producto producto;
+
+    public ComprasProductoPK getId() {
+        return id;
+    }
 
     public void setId(ComprasProductoPK id) {
         this.id = id;
@@ -49,7 +52,19 @@ public class ComprasProducto {
         this.estado = estado;
     }
 
-    public ComprasProductoPK getId() {
-        return id;
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 }

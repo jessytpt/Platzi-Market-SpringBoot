@@ -4,17 +4,18 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "clientes")
+@Table(name="clientes")
 public class Cliente {
+
     @Id
-    @Column(name = "id")
     private String id;
-
-    @Column(name = "nombre")
     private String nombre;
-
-    @Column(name = "apellidos")
     private String apellidos;
+    private Long celular;
+    private String direccion;
+
+    @Column(name="correo_electronico")
+    private String correoElectronico;
 
     @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
@@ -43,11 +44,11 @@ public class Cliente {
         this.apellidos = apellidos;
     }
 
-    public Integer getCelular() {
+    public Long getCelular() {
         return celular;
     }
 
-    public void setCelular(Integer celular) {
+    public void setCelular(Long celular) {
         this.celular = celular;
     }
 
@@ -59,21 +60,19 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public String getCorreo_electronico() {
-        return correo_electronico;
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setCorreo_electronico(String correo_electronico) {
-        this.correo_electronico = correo_electronico;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
-    @Column(name = "celular")
-    private Integer celular;
+    public List<Compra> getCompras() {
+        return compras;
+    }
 
-    @Column(name = "direccion")
-    private String direccion;
-
-    @Column(name = "correo_electronico")
-    private String correo_electronico;
-
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
+    }
 }

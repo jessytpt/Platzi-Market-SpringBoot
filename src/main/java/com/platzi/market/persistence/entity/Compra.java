@@ -1,52 +1,50 @@
 package com.platzi.market.persistence.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table(name = "compras")
 public class Compra {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
-    private Integer id_compra;
+    private Integer idCompra;
 
     @Column(name = "id_cliente")
-    private String id_cliente;
+    private String idCliente;
 
-    @Column(name = "fecha")
     private LocalDateTime fecha;
 
     @Column(name = "medio_pago")
-    private String medio_pago;
+    private String medioPago;
 
-    @Column(name = "comentario")
     private String comentario;
+    private String estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente",insertable = false,updatable = false)
+    @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "productos")
+    @OneToMany(mappedBy = "producto")
     private List<ComprasProducto> productos;
 
-
-    public Integer getId_compra() {
-        return id_compra;
+    public Integer getIdCompra() {
+        return idCompra;
     }
 
-    public void setId_compra(Integer id_compra) {
-        this.id_compra = id_compra;
+    public void setIdCompra(Integer idCompra) {
+        this.idCompra = idCompra;
     }
 
-    public String getId_cliente() {
-        return id_cliente;
+    public String getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
     }
 
     public LocalDateTime getFecha() {
@@ -57,12 +55,12 @@ public class Compra {
         this.fecha = fecha;
     }
 
-    public String getMedio_pago() {
-        return medio_pago;
+    public String getMedioPago() {
+        return medioPago;
     }
 
-    public void setMedio_pago(String medio_pago) {
-        this.medio_pago = medio_pago;
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
     }
 
     public String getComentario() {
@@ -81,6 +79,19 @@ public class Compra {
         this.estado = estado;
     }
 
-    @Column(name = "estado")
-    private String estado;
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ComprasProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ComprasProducto> productos) {
+        this.productos = productos;
+    }
 }
