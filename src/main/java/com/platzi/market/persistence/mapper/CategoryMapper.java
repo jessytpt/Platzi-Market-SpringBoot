@@ -1,7 +1,7 @@
 package com.platzi.market.persistence.mapper;
 
 import com.platzi.market.domain.Category;
-import com.platzi.market.persistence.entity.Categoria;
+import com.platzi.market.persistence.mapper.entity.Categoria;
 import org.mapstruct.*;
 
 @Mapper(componentModel = "spring")
