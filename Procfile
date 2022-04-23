@@ -1,1 +1,0 @@
-web: java -jar Dspring.profiles.active=default build/libs/platzi-market-1.0
